@@ -38,20 +38,21 @@ key_path = "./data/key0.der"
 [[network.parties]]
 id = 0
 # normally we would use DNS name here such as localhost, but localhost under windows is resolved to ::1, which causes problems since we bind to ipv4 above
-dns_name = "127.0.0.1:10000"
+dns_name = "localhost:10000"
 cert_path = "./data/cert0.der"
 [[network.parties]]
 id = 1
-dns_name = "127.0.0.1:10001"
+dns_name = "localhost:10001"
 cert_path = "./data/cert1.der"
 [[network.parties]]
 id = 2
-dns_name = "127.0.0.1:10002"
+dns_name = "localhost:10002"
 cert_path = "./data/cert2.der"
 ```
 _Note: You can get TLS certificate from [this](https://github.com/TaceoLabs/co-snarks/tree/main/co-circom/co-circom/examples/data)_
 - split input by secret sharing protocol to all parties:
 ```
+mkdir out
 co-circom split-input --circuit helloworld.circom --input input.json --protocol REP3 --curve BN254 --out-dir out/ & 
 co-circom split-input --circuit helloworld.circom --input input.json --protocol REP3 --curve BN254 --out-dir out/ & 
 co-circom split-input --circuit helloworld.circom --input input.json --protocol REP3 --curve BN254 --out-dir out/
